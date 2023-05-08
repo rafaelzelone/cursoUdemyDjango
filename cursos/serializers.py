@@ -12,7 +12,6 @@ class AvaliacaoSerializer(serializers.ModelSerializer):
             'curso',
             'nome',
             'email',
-            'comentario',
             'avaliacao',
             'atualizacao',
             'publicacao', 

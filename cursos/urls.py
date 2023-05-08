@@ -4,7 +4,9 @@ from .views import CursoApiView, AvaliacaoApiView, AvaliacoesApiView, CursosApiV
 
 urlpatterns = [
     path('cursos/', CursosApiView.as_view(), name="cursos"),
-    path('avaliacoes/', AvaliacoesApiView.as_view(), name="avaliacoes"),
     path('cursos/<int:pk>/', CursoApiView.as_view(), name="curso"),
-    path('avaliacao/<int:pk>/', AvaliacaoApiView.as_view(), name="avaliacao"),
+    path('cursos/<int:curso_pk>/avaliacoes/', AvaliacoesApiView.as_view(), name="avaliacoes_curso"),
+    path('cursos/<int:curso_pk>/avaliacoes/<int:avaliacao_pk>/', AvaliacaoApiView.as_view(), name="curso_avaliacao"),
+    path('avaliacoes/', AvaliacoesApiView.as_view(), name="avaliacoes"),
+    path('avaliacao/<int:avaliacao_pk>/', AvaliacaoApiView.as_view(), name="avaliacao"),
 ]
