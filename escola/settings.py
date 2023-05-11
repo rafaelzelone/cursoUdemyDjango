@@ -9,7 +9,9 @@ https://docs.djangoproject.com/en/2.2/topics/settings/
 For the full list of settings and their values, see
 https://docs.djangoproject.com/en/2.2/ref/settings/
 """
+#ed0541e08ba675a5ed46f5c1778c94b17152e626
 
+#db5fb1a7e39c935f51a9c959c7b38261acca6d19
 import os
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
@@ -129,12 +131,20 @@ MEDIA_ROOT= os.path.join(BASE_DIR, 'media')
 
 REST_FRAMEWORK = {
     'DEFAULT_AUTHENTICATION_CLASSES': (
-       # 'rest_framework.authentication.SessionAuthentication',
+       'rest_framework.authentication.SessionAuthentication',
        'rest_framework.authentication.TokenAuthentication',
     ),
     'DEFAULT_PERMISSION_CLASSES': (
         'rest_framework.permissions.IsAuthenticatedOrReadOnly',
     ),
     'DEFAULT_PAGINATION_CLASS': 'rest_framework.pagination.PageNumberPagination',
-    'PAGE_SIZE': 1
+    'PAGE_SIZE': 1,
+    'DEFAULT_THROTTLE_CLASSES': (
+        'rest_framework.throttling.AnonRateThrottle',
+        'rest_framework.throttling.UserRateThrottle',
+    ),
+    'DEFAULT_THROTTLE_RATE': {
+        'anon': '5/minute',
+        'user': '10/minute'
+    }
 }
